@@ -1,5 +1,6 @@
 alias ll='ls -lh'
 alias be='bundle exec'
+alias vi='vim'
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
 source ~/.aws_vars.sh
