@@ -1,6 +1,9 @@
+# aliases
 alias ll='ls -lh'
 alias be='bundle exec'
 alias vi='vim'
+
+# allows for tabbing out ssh servers form config file in .ssh
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
 source ~/.aws_vars.sh
@@ -14,6 +17,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 # Load in the git branch prompt script.
 source ~/.git-prompt.sh
 
+# color variables
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
 

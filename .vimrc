@@ -108,3 +108,48 @@ map <Leader>f :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" ctrl-p mapppings
+nnoremap <silent> gb :CtrlPBuffer<CR>
+nnoremap <silent> go :CtrlP<CR>
+nnoremap <silent> gr :CtrlPMRU<CR>
+let g:ctrlp_show_hidden = 1
+
+" map spacebar to save buffer
+nmap <space> :w<CR>
+
+" ---------------------------------------------------------------------------
+" Window Management
+" ---------------------------------------------------------------------------
+" opening and switching
+function! WinMove(key)
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr()) "we havent moved
+    if (match(a:key,'[jk]')) "were we going up/down
+      wincmd v
+    else
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+
+" mappings to make window management easy 
+set winminheight=0
+nnoremap gz :wincmd _<cr>
+
+" window navigation
+nnoremap g<left> :call WinMove('h')<cr>
+nnoremap g<right> :call WinMove('l')<cr>
+nnoremap g<down> :call WinMove('j')<cr>
+nnoremap g<up> :call WinMove('k')<cr>
+
+" closing, rotating, and moving
+nnoremap gH              :wincmd H<cr>
+nnoremap gK              :wincmd K<cr>
+nnoremap gL              :wincmd L<cr>
+nnoremap gJ              :wincmd J<cr>
+
+" Turn off swap file for vim
+set noswapfile
