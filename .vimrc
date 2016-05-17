@@ -97,6 +97,8 @@ autocmd ColorScheme * highlight CursorLine ctermbg=233
 " Map E to Explore
 cabbrev E Explore
 
+"Map W to write buffer
+cabbrev W :w
 
 " Fix tab completion for You-Complete-Me plugin
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
