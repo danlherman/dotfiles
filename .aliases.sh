@@ -15,3 +15,10 @@ alias dot='cd ~/dotfiles'
 # Easy editing of aliases file
 alias ea='vim ~/.aliases.sh'
 alias sa='source ~/.aliases.sh'
+
+# Git shortcuts
+alias gc='git commit'
+alias gpull='git pull'
+alias gpush='git push'
+alias gb='git checkout '
+alias gs='git status'
