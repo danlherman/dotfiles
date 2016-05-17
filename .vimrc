@@ -1,4 +1,3 @@
-let $MYVIMRC = '~/.vimrc'
 
 " alias leader in normal mode
 " let mapleader = ','
@@ -62,9 +61,11 @@ call plug#end()
 let g:signify_vcs_list = [ 'git' ]
 
 " quickly edit/reload the vimrc file
+let $MYVIMRC = '~/.vimrc'
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>re :so $MYVIMRC<CR>
 
+" map :t to new tab
 nmap <silent> <leader>t :tabnew<CR>
 
 " Show col number in status bar
