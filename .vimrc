@@ -31,7 +31,7 @@ set shiftwidth=2
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
 autocmd BufEnter * call system("tmux rename-window " . expand("%"))
 autocmd VimLeave * call system("tmux rename-window bash")
-autocmd BufEnter * let &titlestring = ' ' . expand("%")                                                                 
+autocmd BufEnter * let &titlestring = ' ' . expand("%")
 set title
 
 " Vimplug section
@@ -119,6 +119,7 @@ nnoremap <silent> gr :CtrlPMRU<CR>
 let g:ctrlp_show_hidden = 1
 
 " map spacebar to save buffer
+" nmap <space> :call StripWhitespace ()<CR> :w<CR>
 nmap <space> :w<CR>
 
 " ---------------------------------------------------------------------------
@@ -138,7 +139,7 @@ function! WinMove(key)
   endif
 endfunction
 
-" mappings to make window management easy 
+" mappings to make window management easy
 set winminheight=0
 nnoremap gz :wincmd _<cr>
 
@@ -156,3 +157,22 @@ nnoremap gJ              :wincmd J<cr>
 
 " Turn off swap file for vim
 set noswapfile
+
+" Show hidden characters
+set list
+
+" List chars
+set listchars=""                  " Reset the listchars
+set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
+set listchars+=trail:.            " show trailing spaces as dots
+set listchars+=extends:>          " The character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+set listchars+=precedes:<         " The character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+function! StripWhitespace ()
+  " exec ':%s/ \+$//gc'
+  exec ':%s/\s\+$//e'
+endfunction
+nnoremap <F5> :call StripWhitespace ()<CR>
+
+
