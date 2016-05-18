@@ -21,3 +21,6 @@ RESET="\[$(tput sgr0)\]"
 
 # Set the bash prompt
 export PS1="\W\[$GREEN\]\$(__git_ps1)\[$RESET\]$ "
+
+# Add RBENV support
+eval "$(rbenv init -)"
