@@ -28,4 +28,9 @@ alias gs='git status'
 
 # Update dotfiles if there are any changes
 # alias dotu='for file in $(diff -qr ./ ~/ | grep differ | cut -d " " -f 4); do cp "$file" "~/dotfiles/; fp = $file | cut -d"/" -f4-;echo $fp; done'
-alias dotu='for file in $(diff -qr ./ ~/ | grep differ | cut -d " " -f 4); do cp "$file" ~/dotfiles; echo $file; done'
+alias dotu='for file in $(diff -qr ./ ~/ | grep differ | cut -d " " -f 4); do cp "$file" ~/dotfiles; fp "$file"; done'
+
+function fp {
+  echo $1 | cut -d'/' -f4-
+}
+
