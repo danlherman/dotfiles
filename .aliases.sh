@@ -1,6 +1,5 @@
 # Aliases
 
-
 alias ll='ls -lh'
 alias be='bundle exec'
 alias vi='vim'
@@ -31,5 +30,6 @@ alias gs='git status'
 alias dotu='for file in $(diff -qr ./ ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
 
 function fp {
-  cp $1 ~/dotfiles/${1#*/*/*/}
+  # cp $1 ~/dotfiles/${1#*/*/*/}
+  cp "$1" ~/dotfiles/"${1#*/*/*/}"
 }
