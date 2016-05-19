@@ -27,9 +27,14 @@ alias gb='git checkout '
 alias gs='git status'
 
 # Update dotfiles if there are any changes
-alias dotu='for file in $(diff -qr ./ ~/ | grep differ | cut -d " " -f 4); do eval $(fp "$file"); echo "$file"; done'
+alias dotu='for file in $(diff -qr ./ ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
 
 function fp {
-  printf "%s%s" "cp $1 ~/dotfiles/" $(echo $1 | cut -d'/' -f4-)
+  # echo "cp $1 ~/dotfiles/${1#*/*/*/}"
+  cp $1 ~/dotfiles/${1#*/*/*/}
+ 
 }
 
+fp2() { 
+  printf 'cp %q ~/dotfiles/\n' "dir5/dir6/${1#*/*/}";
+}
