@@ -53,7 +53,8 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'rking/ag.vim'
 " Full path fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
-
+" End Wise (adds end to block)
+Plug 'tpope/vim-endwise'
 " End Vimplug section
 call plug#end()
 
@@ -178,4 +179,5 @@ function! StripWhitespace ()
 endfunction
 nnoremap <F5> :call StripWhitespace ()<CR>
 
-
+" Add CMD-c / CMD-v for copying to Mac Clipboard
+vnoremap <C-c> :w !pbcopy<CR><CR> noremap <C-v> :r !pbpaste<CR><CR>
