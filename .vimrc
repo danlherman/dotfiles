@@ -46,7 +46,7 @@ Plug 'tomtom/tcomment_vim'
 " Run rspec from vim
 Plug 'thoughtbot/vim-rspec'
 " Util for running rspec to tmux window via vim
-Plug 'jgdavey/tslime.vim'
+Plug 'benmills/vimux'
 " colorscheme jellybeans
 Plug 'nanotech/jellybeans.vim'
 " silver searcher search
@@ -55,6 +55,12 @@ Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 " End Wise (adds end to block)
 Plug 'tpope/vim-endwise'
+" Surround code with pairs ("", {}, etc)
+Plug 'tpope/vim-surround'
+" Extends built-in dot repeat command to handle more complex motione
+Plug 'tpope/vim-repeat'
+" Nerd Tree file listing/selection
+Plug 'scrooloose/nerdtree'
 " End Vimplug section
 call plug#end()
 
@@ -108,11 +114,11 @@ cabbrev Q :q
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 
 " Use Send_To_Tmux to run selected specs
-let g:rspec_command = 'call Send_to_Tmux("be spring rspec {spec}\n")'
+let g:rspec_command = ':call VimuxRunCommand("clear; be rspec {spec}")'
 
 " vim-rspec mappings
-map <Leader>f :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>t :call RunCerrentSpecFile()<CR>
+map <Leader>f :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
@@ -181,3 +187,6 @@ nnoremap <F5> :call StripWhitespace ()<CR>
 
 " Add CMD-c / CMD-v for copying to Mac Clipboard
 vnoremap <C-c> :w !pbcopy<CR><CR> noremap <C-v> :r !pbpaste<CR><CR>
+
+" Add undo history
+set undofile
