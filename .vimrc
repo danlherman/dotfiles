@@ -117,7 +117,7 @@ let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:rspec_command = ':call VimuxRunCommand("clear; be rspec {spec}")'
 
 " vim-rspec mappings
-map <Leader>t :call RunCerrentSpecFile()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>f :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
@@ -190,3 +190,10 @@ vnoremap <C-c> :w !pbcopy<CR><CR> noremap <C-v> :r !pbpaste<CR><CR>
 
 " Add undo history
 set undofile
+" Prevent undo files from littering everywhere
+set undodir=~/.vim/undo
+
+" Nerd tree mappings
+nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <leader>nn :NERDTree<CR>
+
