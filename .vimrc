@@ -61,7 +61,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Nerd Tree file listing/selection
 Plug 'scrooloose/nerdtree'
+" easytags for ctag integration and vim-misc is needed for easytags
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
 " End Vimplug section
+"
 call plug#end()
 
 " initiate vim-signify for git-gutter
