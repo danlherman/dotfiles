@@ -1,5 +1,5 @@
 # aliases
-source ~/.aliases.sh
+source ~/.bash/bash_aliases
 
 
 # allows for tabbing out ssh servers form config file in .ssh
