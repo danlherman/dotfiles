@@ -5,14 +5,19 @@ alias ll='ls -lh'
 alias be='bundle exec'
 alias vi='vim'
 alias ~='cd ~'
-alias genssh='~/.ssh/gen_ssh_config;complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh'
+alias genssh='~/.ssh/gen_ssh_config'
+
+# Add tab completion for ssh <servername> for Macs (Linux does this by default)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
+fi
 
 # Links to common directories
 alias c='cd ~/gdr/projects/'
 alias mpl='cd ~/gdr/projects/mpl'
 alias sub='cd ~/gdr/projects/subscriber_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
-alias dot='cd ~/dotfiles'
+alias dots='cd ~/dotfiles'
 alias cook='cd ~/gdr/projects/cookbook-opsworks' 
 # alias dl='cd ~/gdr/projects/'
 
