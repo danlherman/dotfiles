@@ -201,3 +201,12 @@ set undodir=~/.vim/undo
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nn :NERDTree<CR>
 
+" For EasyTags put the ctags file in the tags folder so it can be shared
+set tags=./.ctags;
+let g:easytags_dynamic_files = 1
+" Alt-right/left to navigate forward/backward in the tags stack
+" not working... from
+" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+" map <M-Left> <C-T>
+" map <M-Right> <C-]>
+
