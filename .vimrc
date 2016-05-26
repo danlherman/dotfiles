@@ -61,9 +61,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Nerd Tree file listing/selection
 Plug 'scrooloose/nerdtree'
-" easytags for ctag integration and vim-misc is needed for easytags
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" vimtags for ctag integration
+Plug 'szw/vim-tags'
 " End Vimplug section
 "
 call plug#end()
@@ -201,9 +200,7 @@ set undodir=~/.vim/undo
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nn :NERDTree<CR>
 
-" For EasyTags put the ctags file in the tags folder so it can be shared
-set tags=~/.ctags;
-let g:easytags_dynamic_files = 1
+" For VimTags 
 nmap gn <C-]>
 nmap gp <C-t>
 

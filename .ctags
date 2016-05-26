@@ -1,0 +1,7 @@
+--recurse
+--tag-relative=yes
+--exclude=.git
+--exclude=tmp
+--exclude=log
+--fields=+l
+--extra=q
