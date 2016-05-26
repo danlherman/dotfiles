@@ -35,3 +35,4 @@ export PS1="\W\[$txtgrn\]\$git_branch\[$txtylw\]\$git_dirty\[$txtrst\]\$ "
 
 # Add RBENV support
 eval "$(rbenv init -)"
+

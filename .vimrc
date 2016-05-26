@@ -15,8 +15,9 @@ Plug 'benmills/vimux'
 Plug 'nanotech/jellybeans.vim'
 " silver searcher search
 Plug 'rking/ag.vim'
-" Full path fuzzy file finder
+" Full path fuzzy file finder, and tjump for easier tag searching
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ivalkeen/vim-ctrlp-tjump'
 " End Wise (adds end to block)
 Plug 'tpope/vim-endwise'
 " Surround code with pairs ("", {}, etc)
@@ -27,8 +28,10 @@ Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdtree'
 " vimtags for ctag integration
 Plug 'szw/vim-tags'
+" status bar plugin for cool looking status line
+" Plug 'powerline/powerline'
 " End Vimplug section
-"
+
 call plug#end()
 
 " alias leader in normal mode
@@ -127,6 +130,11 @@ map <Leader>a :call RunAllSpecs()<CR>
 nnoremap <silent> gb :CtrlPBuffer<CR>
 nnoremap <silent> go :CtrlP<CR>
 nnoremap <silent> gr :CtrlPMRU<CR>
+nnoremap <silent> gt :CtrlPTag<CR>
+nnoremap <silent> gf :CtrlPBufTag<CR>
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+let g:ctrlp_tjump_shortener = ['/Users/.*/gems/', '.../']
 let g:ctrlp_show_hidden = 1
 
 " map spacebar to save buffer
@@ -201,4 +209,10 @@ nnoremap <leader>nn :NERDTree<CR>
 " For VimTags 
 nmap gn <C-]>
 nmap gp <C-t>
+
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+" highlight last inserted text
+nnoremap gV `[v`]
 
