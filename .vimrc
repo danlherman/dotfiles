@@ -1,39 +1,3 @@
-
-" alias leader in normal mode
-" let mapleader = ','
-
-
-" Set colorscheme
-color  jellybeans
-
-" Add line numbers
-set nu
-
-" Syntax hightlighting
-syntax on
-
-" Style for file tree (:E)
-let g:netrw_liststyle=3
-
-" Load plugins from plugin folder
-" set runtimepath^=~/.vim/plugin/ctrlp.vim
-" set runtimepath^=~/.vim/plugin/ag
-
-" set tabs
-set tabstop=2
-set softtabstop=2
-set expandtab
-set autoindent
-set smartindent
-set shiftwidth=2
-
-" Rename tmux window based on file in vim
-" autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
-autocmd BufEnter * call system("tmux rename-window " . expand("%"))
-autocmd VimLeave * call system("tmux rename-window bash")
-autocmd BufEnter * let &titlestring = ' ' . expand("%")
-set title
-
 " Vimplug section
 call plug#begin('~/.vim/plugged')
 
@@ -66,6 +30,40 @@ Plug 'szw/vim-tags'
 " End Vimplug section
 "
 call plug#end()
+
+" alias leader in normal mode
+" let mapleader = ','
+
+" Set colorscheme
+color  jellybeans
+
+" Add line numbers
+set nu
+
+" Syntax hightlighting
+syntax on
+
+" Style for file tree (:E)
+let g:netrw_liststyle=3
+
+" Load plugins from plugin folder
+" set runtimepath^=~/.vim/plugin/ctrlp.vim
+" set runtimepath^=~/.vim/plugin/ag
+
+" set tabs
+set tabstop=2
+set softtabstop=2
+set expandtab
+set autoindent
+set smartindent
+set shiftwidth=2
+
+" Rename tmux window based on file in vim
+" autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
+autocmd BufEnter * call system("tmux rename-window " . expand("%"))
+autocmd VimLeave * call system("tmux rename-window bash")
+autocmd BufEnter * let &titlestring = ' ' . expand("%")
+set title
 
 " initiate vim-signify for git-gutter
 let g:signify_vcs_list = [ 'git' ]
