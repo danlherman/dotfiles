@@ -216,3 +216,5 @@ set hlsearch            " highlight matches
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" Add the pry debug line with \bp
+map <Leader>bp Orequire'pry';binding.pry<esc>:w<cr>
