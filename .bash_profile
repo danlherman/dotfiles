@@ -7,6 +7,7 @@ if [[ "$OSTYPE" == "darwin*" ]]; then
 fi
 
 source ~/.aws_vars.sh
+source ~/.prosper_vars.sh
 
 MYSQL=/usr/local/mysql/bin
 export PATH=$PATH:$MYSQL

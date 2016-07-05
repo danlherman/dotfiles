@@ -30,6 +30,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'szw/vim-tags'
 " status bar plugin for cool looking status line
 " Plug 'powerline/powerline'
+" RuboCop plugin
+Plug 'ngmy/vim-rubocop'
+" Fugitive git plugin
+Plug 'tpope/vim-fugitive'
+
 " End Vimplug section
 
 call plug#end()
