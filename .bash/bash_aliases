@@ -32,8 +32,10 @@ alias sb='source ~/.bash_profile'
 
 # Git shortcuts
 alias gc='git commit'
+alias gcn='git commit --no-verify'
 alias gpull='git pull'
 alias gpush='git push'
+alias gpushn='git push --no-verify'
 alias gb='git checkout '
 alias gs='git status'
 

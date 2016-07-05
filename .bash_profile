@@ -38,6 +38,4 @@ export PS1="\W\[$txtgrn\]\$git_branch\[$txtylw\]\$git_dirty\[$txtrst\]\$ "
 eval "$(rbenv init -)"
 
 # Pry History Issues
-if [[ "$OSTYPE" == "darwin*" ]]; then
-  export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
-fi
+export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
