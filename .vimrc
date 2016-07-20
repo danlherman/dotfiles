@@ -223,3 +223,37 @@ nnoremap gV `[v`]
 
 " Add the pry debug line with \bp
 map <Leader>bp Orequire'pry';binding.pry<esc>:w<cr>
+
+"  ############# IGNORES
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Ignore node files
+set wildignore+=*/node_modules/*
+
+" Ignore coverage files
+set wildignore+=*/coverage/*
+
+set wildignore+=*/bower_components/*
+set wildignore+=bower_components/*
+set wildignore+=*/vendor/*
+set wildignore+=*/public/*
+set wildignore+=*/dist/*
+
+" osx
+set wildignore+=.DS_Store
+
+" Disable temp and backup files
+
+set wildignore+=*.swp,*~,._*
+
+" Ignore tmp dirs
+set wildignore+=*/tmp/*,*/servers/*,*/log/*
+
+

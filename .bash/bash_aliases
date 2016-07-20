@@ -39,6 +39,13 @@ alias gpushn='git push --no-verify'
 alias gb='git checkout '
 alias gs='git status'
 
+# Rails shortcuts
+alias lastmigration='vim `last_rails_migration`'
+
+function last_rails_migration {
+  find ./db/migrate -type f | xargs ls -tr | tail -n 1
+}
+
 # Update dotfiles if there are any changes
 alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
 
