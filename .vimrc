@@ -88,7 +88,7 @@ nmap <silent> <leader>t :tabnew<CR>
 set ruler
 
 " Show relative line numbers
-set relativenumber
+" set relativenumber
 
 " Lock scroll to middle of screen
 set scrolloff=3
