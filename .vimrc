@@ -256,4 +256,6 @@ set wildignore+=*.swp,*~,._*
 " Ignore tmp dirs
 set wildignore+=*/tmp/*,*/servers/*,*/log/*
 
+" Fix issue with slow O command
+set timeout timeoutlen=3000 ttimeoutlen=100
 

@@ -15,6 +15,7 @@ fi
 # Links to common directories
 alias c='cd ~/gdr/projects/'
 alias mpl='cd ~/gdr/projects/mpl'
+alias mplimport='cd ~/gdr/projects/mpl_import'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
 alias sub='cd ~/gdr/projects/subscriber_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
@@ -38,6 +39,7 @@ alias gpush='git push'
 alias gpushn='git push --no-verify'
 alias gco='git checkout'
 alias gs='git status'
+alias ga='git add .'
 
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
