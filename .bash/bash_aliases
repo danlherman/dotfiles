@@ -41,6 +41,7 @@ alias gpushn='git push --no-verify'
 alias gco='git checkout'
 alias gs='git status'
 alias ga='git add .'
+alias gd='git diff'
 
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
