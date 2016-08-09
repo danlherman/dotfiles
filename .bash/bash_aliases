@@ -16,6 +16,7 @@ fi
 alias c='cd ~/gdr/projects/'
 alias mpl='cd ~/gdr/projects/mpl'
 alias mplimport='cd ~/gdr/projects/mpl_import'
+alias mplstub='cd ~/gdr/projects/mpl_stub'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
 alias sub='cd ~/gdr/projects/subscriber_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
