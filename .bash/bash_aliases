@@ -6,6 +6,7 @@ alias be='bundle exec'
 alias vi='vim'
 alias ~='cd ~'
 alias genssh='~/.ssh/gen_ssh_config'
+alias tmux="TERM=screen-256color-bce tmux"
 
 # Add tab completion for ssh <servername> for Macs (Linux does this by default)
 if [[ "$OSTYPE" == "darwin"* ]]; then
