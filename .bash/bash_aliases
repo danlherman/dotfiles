@@ -8,11 +8,6 @@ alias ~='cd ~'
 alias genssh='~/.ssh/gen_ssh_config'
 alias tmux="TERM=screen-256color-bce tmux"
 
-# Add tab completion for ssh <servername> for Macs (Linux does this by default)
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
-fi
-
 # Links to common directories
 alias c='cd ~/gdr/projects/'
 alias mpl='cd ~/gdr/projects/mpl'
@@ -23,7 +18,6 @@ alias sub='cd ~/gdr/projects/subscriber_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
 alias dots='cd ~/dotfiles'
 alias cook='cd ~/gdr/projects/cookbook-opsworks' 
-# alias dl='cd ~/gdr/projects/'
 
 # Easy editing of aliases file
 alias ea='vim ~/.bash/bash_aliases'
@@ -47,12 +41,12 @@ alias gd='git diff'
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
 
+# Update dotfiles if there are any changes
+alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
+
 function last_rails_migration {
   find ./db/migrate -type f | xargs ls -tr | tail -n 1
 }
-
-# Update dotfiles if there are any changes
-alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
 
 function fp {
   cp "$1" ~/dotfiles/"${1#*/*/*/}"
