@@ -44,6 +44,9 @@ alias lastmigration='vim `last_rails_migration`'
 # Update dotfiles if there are any changes
 alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
 
+# Check(no changes) to dotfiles if there are any changes
+alias dotc='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do echo "$file"; done'
+
 function last_rails_migration {
   find ./db/migrate -type f | xargs ls -tr | tail -n 1
 }
