@@ -224,6 +224,14 @@ nnoremap gV `[v`]
 " Add the pry debug line with \bp
 map <Leader>bp Orequire'pry';binding.pry<esc>:w<cr>
 
+" map alternate ways to exit insert mode
+inoremap dk <ESC>
+inoremap kd <ESC>
+inoremap jj <ESC>
+
+" map ctrl-a to select all
+nmap <C-a> ggVG
+
 "  ############# IGNORES
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -259,3 +267,6 @@ set wildignore+=*/tmp/*,*/servers/*,*/log/*
 " Fix issue with slow O command
 set timeout timeoutlen=3000 ttimeoutlen=100
 
+" Add vim status line
+set laststatus=2
+hi StatusLine ctermbg=8 ctermfg=7

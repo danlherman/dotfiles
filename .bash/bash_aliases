@@ -14,6 +14,7 @@ alias mpl='cd ~/gdr/projects/mpl'
 alias mplimport='cd ~/gdr/projects/mpl_import'
 alias mplstub='cd ~/gdr/projects/mpl_stub'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
+alias mplsim='cd ~/gdr/projects/mpl_sim'
 alias sub='cd ~/gdr/projects/subscriber_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
 alias dots='cd ~/dotfiles'
@@ -43,6 +44,8 @@ alias lastmigration='vim `last_rails_migration`'
 
 # Update dotfiles if there are any changes
 alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
+
+complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
 function last_rails_migration {
   find ./db/migrate -type f | xargs ls -tr | tail -n 1
