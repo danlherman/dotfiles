@@ -68,10 +68,10 @@ set shiftwidth=2
 
 " Rename tmux window based on file in vim
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
-autocmd BufEnter * call system("tmux rename-window " . expand("%"))
-autocmd VimLeave * call system("tmux rename-window bash")
-autocmd BufEnter * let &titlestring = ' ' . expand("%")
-set title
+" autocmd BufEnter * call system("tmux rename-window " . expand("%"))
+" autocmd VimLeave * call system("tmux rename-window bash")
+" autocmd BufEnter * let &titlestring = ' ' . expand("%")
+" set title
 
 " initiate vim-signify for git-gutter
 let g:signify_vcs_list = [ 'git' ]
