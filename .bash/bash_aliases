@@ -47,6 +47,9 @@ alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4
 
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
+# Check(no changes) to dotfiles if there are any changes
+alias dotc='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do echo "$file"; done'
+
 function last_rails_migration {
   find ./db/migrate -type f | xargs ls -tr | tail -n 1
 }
