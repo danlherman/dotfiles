@@ -22,11 +22,11 @@ alias cook='cd ~/gdr/projects/cookbook-opsworks'
 
 # Easy editing of aliases file
 alias ea='vim ~/.bash/bash_aliases'
-alias sa='source ~/.bash/bash_aliases'
+alias sa='source ~/.bash/bash_aliases;echo "Aliases updated"'
 
 # Easy editing of bash_profile
 alias eb='vim ~/.bash_profile'
-alias sb='source ~/.bash_profile'
+alias sb='source ~/.bash_profile; echo "Bash profile sourced"'
 
 # Git shortcuts
 alias gc='git commit'
@@ -42,13 +42,17 @@ alias gd='git diff'
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
 
-# Update dotfiles if there are any changes
+# Dot files management
+# Check(no changes) to dotfiles if see if there are any changes
+alias dotc='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do echo "$file"; done'
+# Update dotfiles from system to git repo if there are any changes
 alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do fp "$file"; echo "$file"; done'
+# Checke(no changes) to Send updated dotfiles to system
+alias dotpc='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do echo "$file"; done'
+# Update dotfiles from git repo to system
+alias dotp='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do fpp "$file"; echo "$file"; done'
 
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
-
-# Check(no changes) to dotfiles if there are any changes
-alias dotc='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4); do echo "$file"; done'
 
 function last_rails_migration {
   find ./db/migrate -type f | xargs ls -tr | tail -n 1
@@ -57,3 +61,8 @@ function last_rails_migration {
 function fp {
   cp "$1" ~/dotfiles/"${1#*/*/*/}"
 }
+
+function fpp {
+  cp -r "$1" ~/
+}
+
