@@ -39,6 +39,7 @@ alias gco='git checkout'
 alias gs='git status'
 alias ga='git add .'
 alias gd='git diff'
+alias gm='git merge'
 
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
