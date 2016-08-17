@@ -19,6 +19,7 @@ alias sub='cd ~/gdr/projects/subscriber_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
 alias dots='cd ~/dotfiles'
 alias cook='cd ~/gdr/projects/cookbook-opsworks' 
+alias filei='cd ~/gdr/projects/fileimport'
 
 # Easy editing of aliases file
 alias ea='vim ~/.bash/bash_aliases'
