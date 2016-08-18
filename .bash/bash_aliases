@@ -65,6 +65,6 @@ function fp {
 }
 
 function fpp {
-  cp -r "$1" ~/
+  cp -r "$1" ~/"${1#*/*/*/*/}"
 }
 
