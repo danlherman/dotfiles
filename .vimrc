@@ -34,6 +34,8 @@ Plug 'szw/vim-tags'
 Plug 'ngmy/vim-rubocop'
 " Fugitive git plugin
 Plug 'tpope/vim-fugitive'
+" Easymotion plugin
+Plug 'easymotion/vim-easymotion'
 
 " End Vimplug section
 
@@ -232,6 +234,9 @@ inoremap jj <ESC>
 " map ctrl-a to select all
 nmap <C-a> ggVG
 
+" make selecting a line easier
+nnoremap vv V
+
 "  ############# IGNORES
 " Disable output and VCS files
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -270,3 +275,34 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 " Add vim status line
 set laststatus=2
 hi StatusLine ctermbg=8 ctermfg=7
+
+
+" ----------------------------------------------------------------------------
+" easymotion
+" ----------------------------------------------------------------------------
+" let g:EasyMotion_leader_key = '<space>'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+" let g:EasyMotion_do_mapping = 1 " Disable default mappings
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" nmap f <Plug>(easymotion-bd-f)
+" omap f <Plug>(easymotion-bd-f)
+"
+" nmap t <Plug>(easymotion-bd-t)
+" omap t <Plug>(easymotion-bd-t)
+
+nmap s <Plug>(easymotion-bd-f)
+omap s <Plug>(easymotion-bd-f)
+
+" replace incremental search
+nmap / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-sn)
+" extend n/N with more features like auto-highlight
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+
