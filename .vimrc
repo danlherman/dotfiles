@@ -290,11 +290,11 @@ let g:EasyMotion_smartcase = 1
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key
 " binding.
-" nmap f <Plug>(easymotion-bd-f)
-" omap f <Plug>(easymotion-bd-f)
-"
-" nmap t <Plug>(easymotion-bd-t)
-" omap t <Plug>(easymotion-bd-t)
+nmap f <Plug>(easymotion-bd-f)
+omap f <Plug>(easymotion-bd-f)
+
+nmap t <Plug>(easymotion-bd-t)
+omap t <Plug>(easymotion-bd-t)
 
 nmap s <Plug>(easymotion-bd-f)
 omap s <Plug>(easymotion-bd-f)
