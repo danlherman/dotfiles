@@ -57,9 +57,10 @@ alias dotp='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4
 
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
-# Remote tailf command, specify servername to ssh to, and path/to/log/file/to/tail
+# Remote tailf command, specify servername to ssh to, and path starting from /var/log to/log/file
+# example: remote_tail test-server1 squid/access.log
 function remote_tail {
-  ssh -t $1 "sudo tailf \"$2\""
+  ssh -t $1 "sudo tailf \"/var/log/$2\""
 }
 
 function last_rails_migration {
