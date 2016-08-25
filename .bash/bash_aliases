@@ -42,6 +42,9 @@ alias ga='git add .'
 alias gd='git diff'
 alias gm='git merge'
 
+# Tailf remote log shortcuts
+alias rc='`remote_cmd`'
+
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
 
@@ -56,6 +59,10 @@ alias dotpc='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 
 alias dotp='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do fpp "$file"; echo "$file"; done'
 
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
+
+function remote_cmd {
+  echo "ssh -t $1"
+}
 
 function last_rails_migration {
   find ./db/migrate -type f | xargs ls -tr | tail -n 1
