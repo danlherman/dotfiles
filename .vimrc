@@ -226,6 +226,9 @@ nnoremap gV `[v`]
 " Add the pry debug line with \bp
 map <Leader>bp Orequire'pry';binding.pry<esc>:w<cr>
 
+" Add a shortcut for ERB tags with \<
+map <Leader>< <esc>a<%=   %><esc>bhhha
+
 " map alternate ways to exit insert mode
 inoremap dk <ESC>
 inoremap kd <ESC>
