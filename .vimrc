@@ -36,7 +36,8 @@ Plug 'ngmy/vim-rubocop'
 Plug 'tpope/vim-fugitive'
 " Easymotion plugin
 Plug 'easymotion/vim-easymotion'
-
+" Emmet plugin for HTML shortcuts
+Plug 'mattn/emmet-vim'
 " End Vimplug section
 
 call plug#end()
@@ -55,10 +56,6 @@ syntax on
 
 " Style for file tree (:E)
 let g:netrw_liststyle=3
-
-" Load plugins from plugin folder
-" set runtimepath^=~/.vim/plugin/ctrlp.vim
-" set runtimepath^=~/.vim/plugin/ag
 
 " set tabs
 set tabstop=2
@@ -82,9 +79,6 @@ let g:signify_vcs_list = [ 'git' ]
 let $MYVIMRC = '~/.vimrc'
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>re :so $MYVIMRC<CR>
-
-" map :t to new tab
-nmap <silent> <leader>t :tabnew<CR>
 
 " Show col number in status bar
 set ruler
@@ -228,6 +222,9 @@ map <Leader>bp Orequire'pry';binding.pry<esc>:w<cr>
 
 " Add a shortcut for ERB tags with \<
 map <Leader>< <esc>a<%=   %><esc>bhhha
+
+" Add shortcut to convert comma separated line to new-line delimited lines
+nnoremap <Leader>, <esc>V:s/,/\r/g<cr>
 
 " map alternate ways to exit insert mode
 inoremap dk <ESC>
