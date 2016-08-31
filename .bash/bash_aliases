@@ -42,6 +42,15 @@ alias ga='git add .'
 alias gd='git diff'
 alias gm='git merge'
 
+# Docker shortcuts
+alias d='docker'
+alias di='docker images'
+alias dc='docker ps -a'
+alias dfile='vi Dockerfile'
+alias dbuild='docker build'
+alias drm='docker rm'
+alias drun='docker run --rm -it '
+
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
 
