@@ -206,6 +206,9 @@ set undodir=~/.vim/undo
 " Nerd tree mappings
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nn :NERDTree<CR>
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinSize = 50
 
 " For VimTags 
 nmap gn <C-]>
@@ -225,6 +228,9 @@ map <Leader>< <esc>a<%=   %><esc>bhhha
 
 " Add shortcut to convert comma separated line to new-line delimited lines
 nnoremap <Leader>, <esc>V:s/,/\r/g<cr>
+
+" Add shortcut to format JSON via python json.tool
+nnoremap <Leader>json <esc>:%!python -m json.tool<CR>
 
 " map alternate ways to exit insert mode
 inoremap dk <ESC>
