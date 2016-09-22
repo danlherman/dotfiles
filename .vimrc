@@ -232,6 +232,9 @@ nnoremap <Leader>, <esc>V:s/,/\r/g<cr>
 " Add shortcut to format JSON via python json.tool
 nnoremap <Leader>json <esc>:%!python -m json.tool<CR>
 
+" Add shortcut to format XML
+nnoremap <Leader>xml <esc>'<,'>!xmllint --format -
+
 " map alternate ways to exit insert mode
 inoremap dk <ESC>
 inoremap kd <ESC>
