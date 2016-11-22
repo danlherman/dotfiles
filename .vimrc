@@ -37,7 +37,7 @@ Plug 'tpope/vim-fugitive'
 " Easymotion plugin
 Plug 'easymotion/vim-easymotion'
 " Emmet plugin for HTML shortcuts
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 " End Vimplug section
 
 call plug#end()

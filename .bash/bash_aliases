@@ -21,6 +21,7 @@ alias doc='cd ~/gdr/projects/doc_control_client'
 alias dots='cd ~/dotfiles'
 alias cook='cd ~/gdr/projects/cookbook-opsworks' 
 alias filei='cd ~/gdr/projects/fileimport'
+alias sd='cd ~/gdr/projects/sys_doc'
 
 # Easy editing of aliases file
 alias ea='vim ~/.bash/bash_aliases'
@@ -53,6 +54,7 @@ alias drun='docker run --rm -it '
 
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
+alias rdbm='rake db:migrate;RAILS_ENV=test rake db:migrate'
 
 # Dot files management
 # Check(no changes) to dotfiles if see if there are any changes
