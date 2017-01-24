@@ -1,9 +1,12 @@
+" This is supposed to speed up vim start time
+let g:vimsyn_embed='0'
 " Vimplug section
 call plug#begin('~/.vim/plugged')
 
 " Git-Gutter functionality
 Plug 'mhinz/vim-signify'
 " Type-ahead plugin
+" This plugin is running really slow... commenting it out for now.
 Plug 'valloric/YouCompleteMe'
 " Togggle comments with gc
 Plug 'tomtom/tcomment_vim'
@@ -75,10 +78,14 @@ set shiftwidth=2
 " initiate vim-signify for git-gutter
 let g:signify_vcs_list = [ 'git' ]
 
-" quickly edit/reload the vimrc file
+" quickly edit/reload(source) the vimrc file
 let $MYVIMRC = '~/.vimrc'
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>re :so $MYVIMRC<CR>
+nmap <leader>sv :so $MYVIMRC<CR>
+
+" quickly edit the tmux.conf file
+let $MYTMUXCONF = '~/.tmux.conf'
+nmap <silent> <leader>et :e ~/.tmux.conf<CR>
 
 " Show col number in status bar
 set ruler
@@ -87,7 +94,7 @@ set ruler
 " set relativenumber
 
 " Lock scroll to middle of screen
-set scrolloff=3
+" set scrolloff=3
 
 " Fix delete not working some times
 set backspace=indent,eol,start
@@ -234,6 +241,9 @@ nnoremap <Leader>json <esc>:%!python -m json.tool<CR>
 
 " Add shortcut to format XML
 nnoremap <Leader>xml <esc>'<,'>!xmllint --format -
+
+" Add shortcut to show git-blame for current file using Fugitive plugin
+nnoremap <Leader>gb <esc>:Gblame<cr>
 
 " map alternate ways to exit insert mode
 inoremap dk <ESC>

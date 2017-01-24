@@ -7,6 +7,10 @@ alias vi='vim'
 alias ~='cd ~'
 alias genssh='~/.ssh/gen_ssh_config'
 alias tmux="TERM=screen-256color-bce tmux"
+alias rake='be rake'
+alias rails='be rails'
+alias rspec='be rspec'
+alias console='be console'
 
 # Links to common directories
 alias c='cd ~/gdr/projects/'
@@ -31,6 +35,9 @@ alias sa='source ~/.bash/bash_aliases;echo "Aliases updated"'
 alias eb='vim ~/.bash_profile'
 alias sb='source ~/.bash_profile; echo "Bash profile sourced"'
 
+# Easy editing of tmux.conf file
+alias et='vim ~/.tmux.conf'
+
 # Git shortcuts
 alias gc='git commit'
 alias gcn='git commit --no-verify'
@@ -42,6 +49,8 @@ alias gs='git status'
 alias ga='git add .'
 alias gd='git diff'
 alias gm='git merge'
+alias gpushstaging='gco staging;gm master;gpushn;gco master'
+alias gpushprod='gco production;gm staging;gpushn;gco master'
 alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gco master'
 
 # Docker shortcuts
@@ -55,7 +64,7 @@ alias drun='docker run --rm -it '
 
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
-alias rdbm='rake db:migrate;RAILS_ENV=test rake db:migrate'
+alias rdbm='be rake db:migrate;RAILS_ENV=test be rake db:migrate'
 
 # Dot files management
 # Check(no changes) to dotfiles if see if there are any changes
