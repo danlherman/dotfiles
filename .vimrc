@@ -1,6 +1,12 @@
 " This is supposed to speed up vim start time
 let g:vimsyn_embed='0'
 " Vimplug section
+"
+" To install vim-plug do the following:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" then run :PlugInstall to install plugins
+"
 call plug#begin('~/.vim/plugged')
 
 " Git-Gutter functionality
