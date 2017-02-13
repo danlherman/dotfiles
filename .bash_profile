@@ -2,6 +2,9 @@
 source ~/.bash/bash_aliases
 source ~/.private_vars.sh
 
+# default editor
+export EDITOR='vim'
+
 # shell prompt with git status
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
