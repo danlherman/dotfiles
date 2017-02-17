@@ -47,6 +47,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
 " Emmet plugin for HTML shortcuts
 " Plug 'mattn/emmet-vim'
+" Automatic Syntax Checker
+" Plug 'vim-syntastic/syntastic'
 " End Vimplug section
 
 call plug#end()
@@ -250,6 +252,8 @@ nnoremap <Leader>xml <esc>'<,'>!xmllint --format -
 
 " Add shortcut to show git-blame for current file using Fugitive plugin
 nnoremap <Leader>gb <esc>:Gblame<cr>
+nnoremap <Leader>gs <esc>:Gstatus<cr>
+nnoremap <Leader>gd <esc>:Gdiff<cr>
 
 " map alternate ways to exit insert mode
 inoremap dk <ESC>
@@ -300,7 +304,26 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 " Add vim status line
 set laststatus=2
 hi StatusLine ctermbg=8 ctermfg=7
+set statusline=
+set statusline +=%1*\ b%n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%t%*            "file
+" set statusline +=\ %{fugitive#statusline()} " Git Branch
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%2*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
+" Syntastic statusline stettings
+" set statusline +=%#warningmsg#
+" set statusline +=%{SyntasticStatuslineFlag()}
+" set statusline +=%*
 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " ----------------------------------------------------------------------------
 " easymotion

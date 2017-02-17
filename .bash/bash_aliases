@@ -66,6 +66,7 @@ alias drun='docker run --rm -it '
 # Rails shortcuts
 alias lastmigration='vim `last_rails_migration`'
 alias rdbm='be rake db:migrate;RAILS_ENV=test be rake db:migrate'
+alias rbenv-update='cd ~/.rbenv;gpull;cd plugins/ruby-build;gpull'
 
 # Dot files management
 # Check(no changes) to dotfiles if see if there are any changes
