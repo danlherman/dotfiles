@@ -7,10 +7,6 @@ alias vi='vim'
 alias ~='cd ~'
 alias genssh='~/.ssh/gen_ssh_config'
 alias tmux="TERM=screen-256color-bce tmux"
-alias rake='be rake'
-alias rails='be rails'
-alias rspec='be rspec'
-alias console='be console'
 
 # Links to common directories
 alias c='cd ~/gdr/projects/'
@@ -64,6 +60,10 @@ alias drm='docker rm'
 alias drun='docker run --rm -it '
 
 # Rails shortcuts
+alias rake='be rake'
+alias rails='be rails'
+alias rspec='be rspec'
+alias console='be console'
 alias lastmigration='vim `last_rails_migration`'
 alias rdbm='be rake db:migrate;RAILS_ENV=test be rake db:migrate'
 alias rbenv-update='cd ~/.rbenv;gpull;cd plugins/ruby-build;gpull'
@@ -78,6 +78,7 @@ alias dotpc='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 
 # Update dotfiles from git repo to system
 alias dotp='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do fpp "$file"; echo "$file"; done'
 
+# SSH/SFTP/SCP tabout from SSH config
 complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
 # Remote tailf command, specify servername to ssh to, and path starting from /var/log to/log/file
@@ -106,3 +107,6 @@ function fpp {
   cp -r "$1" ~/"${1#*/*/*/*/}"
 }
 
+function top30history {
+  history|awk '{print $2}'|sort|uniq -c|sort -rn|head -30|awk '!max{max=$1;}{r="";i=s=100*$1/max;while(i-->0)r=r"#";printf "%50s %5d %s %s",$2,$1,r,"\n";}'
+}
