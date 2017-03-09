@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+require 'tty-prompt'
+
+def choose_ticket(message, project_prefix)
+  require 'rubygems'
+  require 'jira-ruby'
+  # require 'rb-readline'
+  # require 'pry'
+
+  STDIN.reopen('/dev/tty')
+
+  options = {
+    :username     => ENV['JIRA_EMAIL'],
+    :password     => ENV['JIRA_PASSWORD'],
+    :site         => ENV['JIRA_URL'],
+    :context_path => '',
+    :auth_type    => :basic
+  }
+
+  client = JIRA::Client.new(options)
+
+  project = client.Project.find(project_prefix)
+
+  in_progress_tickets = ['Add a new ticket']
+  open_tickets = []
+  sample = nil
+  current_sprint_id = 0
+  project.issues.each do |issue|
+    status = issue.status.attrs['name']
+    current_sprint_id = issue.attrs['fields']['customfield_10007'].first.split('=')[-1].delete(']').to_i if status == 'In Progress'
+    in_progress_tickets << "#{issue.id} - #{issue.summary} [#{status}]" if status == 'In Progress'
+    open_tickets << "#{issue.id} - #{issue.summary} [#{status}]" if status == 'Open'
+  end
+  prompt = TTY::Prompt.new
+  ticket_txt = prompt.select("Select a ticket: ", in_progress_tickets.concat(open_tickets), per_page: 10)
+  ticket_id = ticket_txt.split(' ')[0]
+  if ticket_id != 'Add'
+    message = message.strip + " [jira: #{project_prefix}-#{ticket_id}]"
+    File.open(ARGV[0], 'w') { |f| f.write message }
+    return
+  end
+
+  # new ticket
+  description = prompt.ask('Ticket Description:', default: message)
+  issue = client.Issue.build
+  params = {
+    'fields' => {
+      'summary' => description,
+      'project' => { 'id' => project.id, 'key' => project.key },
+      'issuetype' => { 'id' => '3' },
+      'assignee' => { 'emailAddress' => ENV['JIRA_EMAIL'], 'name' => ENV['JIRA_EMAIL'].split('@')[0] }
+    }
+  }
+  issue.save(params)
+
+  # assign to current sprint
+  sprint_params = "{ \"idOrKeys\":[\"#{issue.key}\"],\"customFieldId\":10007,\"sprintId\":#{current_sprint_id},\"addToBacklog\":false }"
+  curl_cmd = "curl -s -D- -u #{ENV['JIRA_EMAIL']}:#{ENV['JIRA_PASSWORD']} -H 'Content-Type: application/json' -X PUT -d '#{sprint_params}' #{ENV['JIRA_URL']}/rest/greenhopper/1.0/sprint/rank"
+  `#{curl_cmd}`
+
+  message = message.strip + " [jira: #{issue.key}]"
+  File.open(ARGV[0], 'w') { |f| f.write message }
+  # exit 1
+end
+
+message_file = ARGV[0]
+message = File.read(message_file)
+
+regex = /\[jira: (\d+)\]|merge/
+project_prefix = 'AD'
+
+if !regex.match(message)
+  prompt = TTY::Prompt.new
+  prompt.warn "[POLICY] Your commit message is missing a ticket number (i.e. [jira: #{project_prefix}-xxxx])"
+  message = choose_ticket(message, project_prefix)
+end
+
