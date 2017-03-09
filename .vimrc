@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-signify'
 " Type-ahead plugin
 " This plugin is running really slow... commenting it out for now.
-Plug 'valloric/YouCompleteMe'
+" Plug 'valloric/YouCompleteMe'
 " Togggle comments with gc
 Plug 'tomtom/tcomment_vim'
 " Run rspec from vim

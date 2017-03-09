@@ -24,3 +24,4 @@ if [[ "$OSTYPE" == "darwin*" ]]; then
   export PATH=$PATH:$MYSQL
   export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 fi
+export PATH="/usr/local/opt/openssl/bin:$PATH"
