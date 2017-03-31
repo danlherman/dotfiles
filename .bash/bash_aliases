@@ -38,7 +38,7 @@ alias et='vim ~/.tmux.conf'
 # Git shortcuts
 alias gc='git commit'
 alias gcu='git reset HEAD~' # git commit undo
-alias gcn='git commit --no-verify'
+alias gcn='RUBO=no git commit'
 alias gpull='git pull'
 alias gpush='git push'
 alias gpushn='git push --no-verify'
