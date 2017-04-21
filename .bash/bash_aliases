@@ -23,6 +23,8 @@ alias dots='cd ~/dotfiles'
 alias cook='cd ~/gdr/projects/cookbook-opsworks' 
 alias filei='cd ~/gdr/projects/fileimport'
 alias sd='cd ~/gdr/projects/sys_doc'
+alias fabric='cd ~/gdr/fabric-composer/loan-network'
+alias composerui='node /Users/danherman/scratch/composer/packages/composer-website/node_modules/composer-ui/cli.js'
 
 # Easy editing of aliases file
 alias ea='vim ~/.bash/bash_aliases'
@@ -91,6 +93,10 @@ function remote_tail {
 
 function patch_svr {
   ssh -t $1 "sudo yum update -y --skip-broken"
+}
+
+function svr_uptime {
+  ssh -t $1 "uptime"
 }
 
 function fix_clam {
