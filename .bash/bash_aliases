@@ -62,6 +62,7 @@ alias dfile='vi Dockerfile'
 alias dbuild='docker build'
 alias drm='docker rm'
 alias drun='docker run --rm -it '
+alias dstopall='docker kill $(docker ps -q)'
 
 # Rails shortcuts
 alias rake='be rake'
@@ -117,4 +118,8 @@ function fpp {
 
 function top30history {
   history|awk '{print $2}'|sort|uniq -c|sort -rn|head -30|awk '!max{max=$1;}{r="";i=s=100*$1/max;while(i-->0)r=r"#";printf "%50s %5d %s %s",$2,$1,r,"\n";}'
+}
+
+function match_csv_col1 {
+  awk -F',' 'NR==FNR{c[$1]++;next};c[$1] > 0' $1 $2
 }

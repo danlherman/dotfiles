@@ -12,7 +12,7 @@ def choose_ticket(message, project_prefix)
   options = {
     :username     => ENV['JIRA_EMAIL'],
     :password     => ENV['JIRA_PASSWORD'],
-    :site         => ENV['JIRA_URL'],
+    :site         => 'http://globaldebtregistry.atlassian.net:443/',
     :context_path => '',
     :auth_type    => :basic
   }
@@ -55,8 +55,12 @@ def choose_ticket(message, project_prefix)
 
   # assign to current sprint
   sprint_params = "{ \"idOrKeys\":[\"#{issue.key}\"],\"customFieldId\":10007,\"sprintId\":#{current_sprint_id},\"addToBacklog\":false }"
-  curl_cmd = "curl -s -D- -u #{ENV['JIRA_EMAIL']}:#{ENV['JIRA_PASSWORD']} -H 'Content-Type: application/json' -X PUT -d '#{sprint_params}' #{ENV['JIRA_URL']}/rest/greenhopper/1.0/sprint/rank"
+  curl_cmd = "curl -s -D- -u #{ENV['JIRA_EMAIL']}:#{ENV['JIRA_PASSWORD']} -H 'Content-Type: application/json' -X PUT -d '#{sprint_params}' https://globaldebtregistry.atlassian.net:443/rest/greenhopper/1.0/sprint/rank"
   `#{curl_cmd}`
+
+  # transition to in-progress
+  # status_params = "{ \"fields\": { \"assignee\": { \"name\": \"#{ENV['JIRA_EMAIL'].split('@')[0]}\"} }, \"transition\": { \"id\": \"3\" } }"
+  # curl_cmd = "curl -D- -u #{ENV['JIRA_EMAIL']}:#{ENV['JIRA_PASSWORD']} -H 'Content-Type: application/json' -X PUT -d '#{status_params}' https://globaldebtregistry.atlassian.net:443/rest/api/2/issue/#{issue.key}/transitions"
 
   message = message.strip + " [jira: #{issue.key}]"
   File.open(ARGV[0], 'w') { |f| f.write message }
