@@ -13,6 +13,10 @@ export PS1="\W\[$txtgrn\]\$git_branch\[$txtylw\]\$git_dirty\[$txtrst\]\$ "
 # Add RBENV support
 eval "$(rbenv init -)"
 
+# Add NVM support
+export NVM_DIR=~/.nvm
+source /usr/local/opt/nvm/nvm.sh  # This loads NVM
+
 # Mac specific stuff
 if [[ "$OSTYPE" == "darwin*" ]]; then
   # allows for tabbing out ssh servers form config file in .ssh (this automatically works in Linux)

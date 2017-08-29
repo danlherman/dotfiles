@@ -10,12 +10,14 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 # Links to common directories
 alias c='cd ~/gdr/projects/'
+alias scratch='cd ~/scratch/'
 alias mpl='cd ~/gdr/projects/mpl'
 alias mplimport='cd ~/gdr/projects/mpl_import'
 alias mplstub='cd ~/gdr/projects/mpl_stub'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
 alias mpllambda='cd ~/gdr/projects/mpl_lambda'
 alias mplsim='cd ~/gdr/projects/mpl_sim'
+alias mplnode='cd ~/gdr/projects/mpl_import_node'
 alias sub='cd ~/gdr/projects/subscriber_portal'
 alias dl='cd ~/gdr/projects/consumer_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
@@ -64,6 +66,10 @@ alias drm='docker rm'
 alias drun='docker run --rm -it '
 alias dstopall='docker kill $(docker ps -q)'
 
+# Node shortcuts
+alias lint='npm run lint'
+alias nconsole='node console.js'
+
 # Rails shortcuts
 alias rake='be rake'
 alias rails='be rails'
@@ -90,6 +96,10 @@ complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[
 # example: remote_tail test-server1 squid/access.log
 function remote_tail {
   ssh -t $1 "sudo tailf \"/var/log/$2\""
+}
+
+function remote_tail_mpl {
+  ssh -t $1 "sudo tailf \"/srv/www/mpl/shared/log/production.log\""
 }
 
 function patch_svr {
