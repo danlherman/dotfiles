@@ -18,6 +18,7 @@ alias mplscripts='cd ~/gdr/projects/mpl_scripts'
 alias mpllambda='cd ~/gdr/projects/mpl_lambda'
 alias mplsim='cd ~/gdr/projects/mpl_sim'
 alias mplnode='cd ~/gdr/projects/mpl_import_node'
+alias nencrypt='cd ~/gdr/projects/node-encrypt'
 alias sub='cd ~/gdr/projects/subscriber_portal'
 alias dl='cd ~/gdr/projects/consumer_portal'
 alias doc='cd ~/gdr/projects/doc_control_client'
@@ -68,7 +69,8 @@ alias dstopall='docker kill $(docker ps -q)'
 
 # Node shortcuts
 alias lint='npm run lint'
-alias nconsole='node console.js'
+alias nconsole='npm run console'
+alias build='npm run build'
 
 # Rails shortcuts
 alias rake='be rake'

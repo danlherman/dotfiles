@@ -2,6 +2,9 @@
 source ~/.bash/bash_aliases
 source ~/.private_vars.sh
 
+# bash vi mode
+set -o vi
+
 # default editor
 export EDITOR='vim'
 
@@ -9,6 +12,7 @@ export EDITOR='vim'
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 export PS1="\W\[$txtgrn\]\$git_branch\[$txtylw\]\$git_dirty\[$txtrst\]\$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 
 # Add RBENV support
 eval "$(rbenv init -)"

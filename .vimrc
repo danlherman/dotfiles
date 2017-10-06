@@ -257,9 +257,9 @@ nnoremap <Leader>gs <esc>:Gstatus<cr>
 nnoremap <Leader>gd <esc>:Gdiff<cr>
 
 " map alternate ways to exit insert mode
-inoremap dk <ESC>
-inoremap kd <ESC>
-inoremap jj <ESC>
+" inoremap dk <ESC>
+" inoremap kd <ESC>
+" inoremap jj <ESC>
 
 " map ctrl-a to select all
 nmap <C-a> ggVG
@@ -279,6 +279,7 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 
 " Ignore node files
 set wildignore+=*/node_modules/*
+set wildignore+=*/build/*
 
 " Ignore coverage files
 set wildignore+=*/coverage/*
