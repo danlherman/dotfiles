@@ -49,9 +49,31 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'mattn/emmet-vim'
 " Automatic Syntax Checker
 " Plug 'vim-syntastic/syntastic'
-" End Vimplug section
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
+" End Vimplug section
 call plug#end()
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"         
+let g:UltiSnipsJumpForwardTrigger = "<tab>"    
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
 
 " alias leader in normal mode
 " let mapleader = ','

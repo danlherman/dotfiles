@@ -15,7 +15,8 @@ alias mpl='cd ~/gdr/projects/mpl'
 alias mplimport='cd ~/gdr/projects/mpl_import'
 alias mplstub='cd ~/gdr/projects/mpl_stub'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
-alias mpllambda='cd ~/gdr/projects/mpl_lambda'
+alias mplapi='cd ~/gdr/projects/mpl_api'
+alias mplreact='cd ~/gdr/projects/mpl_react'
 alias mplsim='cd ~/gdr/projects/mpl_sim'
 alias mplnode='cd ~/gdr/projects/mpl_import_node'
 alias nencrypt='cd ~/gdr/projects/node-encrypt'
@@ -56,6 +57,11 @@ alias gm='git merge'
 alias gpushstaging='gco staging;gm master;gpushn;gco master'
 alias gpushprod='gco production;gm staging;gpushn;gco master'
 alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gco master'
+
+# Serverless shortcuts
+alias slsdf='serverless deploy function --function'
+alias slsd='serverless deploy'
+alias sls='serverless'
 
 # Docker shortcuts
 alias d='docker'
