@@ -63,6 +63,8 @@ alias slsdf='serverless deploy function --function'
 alias slsd='serverless deploy'
 alias sls='serverless'
 alias slsil='serverless invoke local --function'
+alias slsdebug='export SLS_DEBUG=*'
+alias slsnodebug='unset SLS_DEBUG'
 
 # Docker shortcuts
 alias d='docker'
