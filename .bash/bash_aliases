@@ -62,6 +62,7 @@ alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gc
 alias slsdf='serverless deploy function --function'
 alias slsd='serverless deploy'
 alias sls='serverless'
+alias slsil='serverless invoke local --function'
 
 # Docker shortcuts
 alias d='docker'
