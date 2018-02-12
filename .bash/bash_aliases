@@ -76,6 +76,12 @@ alias drm='docker rm'
 alias drun='docker run --rm -it '
 alias dstopall='docker kill $(docker ps -q)'
 
+# Kubernetes shortcuts
+alias k8='kubectl'
+alias k8mini='kubectl config use-context minikube'
+alias k8switch='kubectl config use-context'
+alias k8s='kubectl config get-contexts'
+
 # Node shortcuts
 alias lint='npm run lint'
 alias nconsole='npm run console'
