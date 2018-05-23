@@ -19,7 +19,9 @@ eval "$(rbenv init -)"
 
 # Add NVM support
 export NVM_DIR=~/.nvm
-source /usr/local/opt/nvm/nvm.sh  # This loads NVM
+if [[ "$OSTYPE" == "darwin*" ]]; then
+  source /usr/local/opt/nvm/nvm.sh  # This loads NVM
+fi
 
 # Mac specific stuff
 if [[ "$OSTYPE" == "darwin*" ]]; then
