@@ -35,6 +35,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " Nerd Tree file listing/selection
 Plug 'scrooloose/nerdtree'
+" DB support for VIM
+Plug 'tpope/vim-db'
 " vimtags for ctag integration
 Plug 'szw/vim-tags'
 " status bar plugin for cool looking status line
@@ -49,9 +51,9 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'mattn/emmet-vim'
 " Automatic Syntax Checker
 " Plug 'vim-syntastic/syntastic'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 " End Vimplug section
 call plug#end()
@@ -141,7 +143,7 @@ set lazyredraw
 " Highlight entire cursor line
 set cursorline
 " hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-autocmd ColorScheme * highlight CursorLine ctermbg=233
+autocmd ColorScheme * highlight CursorLine ctermbg=240
 
 " Map E to Explore
 cabbrev E Explore

@@ -60,11 +60,15 @@ alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gc
 
 # Serverless shortcuts
 alias slsdf='serverless deploy function --function'
-alias slsd='serverless deploy'
-alias sls='serverless'
+alias slsdft='serverless deploy -t function --function'
+alias slsd='serverless deploy --stage dev'
+alias slspd='serverless deploy --stage prod'
+alias slspdf='serverless deploy --stage prod function --function '
 alias slsil='serverless invoke local --function'
 alias slsdebug='export SLS_DEBUG=*'
 alias slsnodebug='unset SLS_DEBUG'
+alias slsremove='serverless remove --region us-east-1'
+alias slsremovep='serverless remove --stage prod --region us-east-1'
 
 # Docker shortcuts
 alias d='docker'
