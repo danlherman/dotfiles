@@ -2,6 +2,9 @@
 source ~/.bash/bash_aliases
 source ~/.private_vars.sh
 
+# extend timeout for AWS when on slowing networks
+export AWS_CLIENT_TIMEOUT=900000
+
 # bash vi mode
 set -o vi
 
@@ -19,12 +22,12 @@ eval "$(rbenv init -)"
 
 # Add NVM support
 export NVM_DIR=~/.nvm
-if [[ "$OSTYPE" == "darwin*" ]]; then
+if [[ "$OSTYPE" == "darwin17" ]]; then
   source /usr/local/opt/nvm/nvm.sh  # This loads NVM
 fi
 
 # Mac specific stuff
-if [[ "$OSTYPE" == "darwin*" ]]; then
+if [[ "$OSTYPE" == "darwin17" ]]; then
   # allows for tabbing out ssh servers form config file in .ssh (this automatically works in Linux)
   complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
   # Pry History Issues

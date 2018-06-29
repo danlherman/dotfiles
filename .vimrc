@@ -17,7 +17,7 @@ Plug 'mhinz/vim-signify'
 " Togggle comments with gc
 Plug 'tomtom/tcomment_vim'
 " Run rspec from vim
-Plug 'thoughtbot/vim-rspec'
+" Plug 'thoughtbot/vim-rspec'
 " Util for running rspec to tmux window via vim
 Plug 'benmills/vimux'
 " colorscheme jellybeans
@@ -38,11 +38,11 @@ Plug 'scrooloose/nerdtree'
 " DB support for VIM
 Plug 'tpope/vim-db'
 " vimtags for ctag integration
-Plug 'szw/vim-tags'
+" Plug 'szw/vim-tags'
 " status bar plugin for cool looking status line
 " Plug 'powerline/powerline'
 " RuboCop plugin
-Plug 'ngmy/vim-rubocop'
+" Plug 'ngmy/vim-rubocop'
 " Fugitive git plugin
 Plug 'tpope/vim-fugitive'
 " Easymotion plugin
