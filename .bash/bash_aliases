@@ -63,15 +63,23 @@ alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gc
 
 # Serverless shortcuts
 alias slsdf='serverless deploy function --function'
+alias slspdf='serverless deploy --stage prod function --function '
+alias slstdf='serverless deploy --stage test function --function '
+alias slssdf='serverless deploy --stage staging function --function '
+alias slsddf='serverless deploy --stage demo function --function '
 alias slsdft='serverless deploy -t function --function'
 alias slsd='serverless deploy --stage dev'
 alias slspd='serverless deploy --stage prod'
-alias slspdf='serverless deploy --stage prod function --function '
-alias slsil='serverless invoke local --function'
+alias slssd='serverless deploy --stage staging'
+alias slsdd='serverless deploy --stage demo'
+alias slsil='AWS_XRAY_CONTEXT_MISSING=LOG_ERROR serverless invoke local --function'
 alias slsdebug='export SLS_DEBUG=*'
 alias slsnodebug='unset SLS_DEBUG'
 alias slsremove='serverless remove --region us-east-1'
 alias slsremovep='serverless remove --stage prod --region us-east-1'
+
+# AWS shortcuts
+alias awslog='awslogs get $1 ALL -s1h --watch | sed -e 's|$1||''
 
 # Docker shortcuts
 alias d='docker'
