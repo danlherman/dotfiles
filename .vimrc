@@ -54,9 +54,14 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 " Plug 'honza/vim-snippets'
+" For ESLint integration
+Plug 'w0rp/ale'
 
 " End Vimplug section
 call plug#end()
+
+" ESLint Integration wkth syntastic
+let b:ale_linters = ['eslint']
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

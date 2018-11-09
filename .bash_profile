@@ -22,16 +22,16 @@ eval "$(rbenv init -)"
 
 # Add NVM support
 export NVM_DIR=~/.nvm
-if [[ "$OSTYPE" == "darwin17" ]]; then
+if [[ "$OSTYPE" == "darwin18" ]]; then
   source /usr/local/opt/nvm/nvm.sh  # This loads NVM
 fi
 
 # Mac specific stuff
-if [[ "$OSTYPE" == "darwin17" ]]; then
+if [[ "$OSTYPE" == "darwin18" ]]; then
   # allows for tabbing out ssh servers form config file in .ssh (this automatically works in Linux)
   complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
   # Pry History Issues
-  export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
+  # export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
   # MySQL support
   MYSQL=/usr/local/mysql/bin
   export PATH=$PATH:$MYSQL

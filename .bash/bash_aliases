@@ -12,24 +12,15 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias c='cd ~/gdr/projects/'
 alias scratch='cd ~/scratch/'
 alias mpl='cd ~/gdr/projects/mpl'
-alias mplimport='cd ~/gdr/projects/mpl_import'
-alias mplstub='cd ~/gdr/projects/mpl_stub'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
 alias mplapi='cd ~/gdr/projects/mpl_api'
+alias mplback='cd ~/gdr/projects/mpl_backend'
 alias mplbc='cd ~/gdr/projects/mpl_bc'
 alias mplweb='cd ~/gdr/projects/mpl_web_api'
 alias mplreact='cd ~/gdr/projects/mpl_react'
-alias mplsim='cd ~/gdr/projects/mpl_sim'
-alias mplnode='cd ~/gdr/projects/mpl_import_node'
-alias nencrypt='cd ~/gdr/projects/node-encrypt'
-alias sub='cd ~/gdr/projects/subscriber_portal'
-alias dl='cd ~/gdr/projects/consumer_portal'
-alias doc='cd ~/gdr/projects/doc_control_client'
 alias dots='cd ~/dotfiles'
-alias cook='cd ~/gdr/projects/cookbook-opsworks' 
-alias filei='cd ~/gdr/projects/fileimport'
-alias sd='cd ~/gdr/projects/sys_doc'
-alias bcnet='cd ~/gdr/blockchain-loan-network'
+alias loannet='cd ~/gdr/blockchain-loan-network'
+alias loannetstaging='cd ~/gdr/staging-loan-network'
 alias fabric='cd ~/gdr/fabric-composer/loan-network'
 alias composerui='node /Users/danherman/scratch/composer/packages/composer-website/node_modules/composer-ui/cli.js'
 
@@ -53,6 +44,7 @@ alias gpush='git push'
 alias gpushn='git push --no-verify'
 alias gco='git checkout'
 alias gs='git status'
+alias gb='git branch'
 alias ga='git add .'
 alias gd='git diff'
 alias gcd='git log -p -1'
@@ -60,6 +52,7 @@ alias gm='git merge'
 alias gpushstaging='gco staging;gm master;gpushn;gco master'
 alias gpushprod='gco production;gm staging;gpushn;gco master'
 alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gco master'
+alias gpushb='git push --set-upstream origin'
 
 # Serverless shortcuts
 alias slsdf='serverless deploy function --function'
@@ -71,6 +64,7 @@ alias slsdft='serverless deploy -t function --function'
 alias slsd='serverless deploy --stage dev'
 alias slspd='serverless deploy --stage prod'
 alias slssd='serverless deploy --stage staging'
+alias slstd='serverless deploy --stage test'
 alias slsdd='serverless deploy --stage demo'
 alias slsil='AWS_XRAY_CONTEXT_MISSING=LOG_ERROR serverless invoke local --function'
 alias slsdebug='export SLS_DEBUG=*'
@@ -122,7 +116,7 @@ alias dotpc='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 
 alias dotp='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do fpp "$file"; echo "$file"; done'
 
 # SSH/SFTP/SCP tabout from SSH config
-complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
+# complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
 
 # Remote tailf command, specify servername to ssh to, and path starting from /var/log to/log/file
 # example: remote_tail test-server1 squid/access.log
