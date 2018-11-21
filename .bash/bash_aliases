@@ -7,6 +7,8 @@ alias vi='vim'
 alias ~='cd ~'
 alias genssh='~/.ssh/gen_ssh_config'
 alias tmux="TERM=screen-256color-bce tmux"
+alias hang="hangups -c ~/hangups/hangups.conf"
+alias macnetstat="sudo lsof -PiTCP -sTCP:LISTEN"
 
 # Links to common directories
 alias c='cd ~/gdr/projects/'
