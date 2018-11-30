@@ -37,4 +37,6 @@ if [[ "$OSTYPE" == "darwin18" ]]; then
   export PATH=$PATH:$MYSQL
   export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 fi
-export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$HOME/go/bin:$PATH"
+
+export GOPATH=$HOME/go
