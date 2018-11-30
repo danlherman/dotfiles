@@ -6,7 +6,7 @@ LC_NUMERIC=en_US.UTF-8
 
 SYMBOLS=("$@")
 
-if ! $(type jq > /dev/null 2>&1); then
+if ! $(type /usr/local/bin/jq > /dev/null 2>&1); then
   echo "'jq' is not in the PATH. (See: https://stedolan.github.io/jq/)"
   exit 1
 fi
@@ -29,16 +29,17 @@ symbols=$(IFS=,; echo "${SYMBOLS[*]}")
 fields=$(IFS=,; echo "${FIELDS[*]}")
 
 # now=$(date --date=$(date --iso-8601) +%s 2>/dev/null)
-stamp_file="$HOME/.tickerPrice/$symbols.price"
+price_file="$HOME/.tickerPrice/$symbols.price"
+diff_file="$HOME/.tickerPrice/$symbols.diff"
 # stamp=$(date --date=$(date -r $stamp_file --iso-8601) +%s 2>/dev/null)
 # delta=$(($now-$stamp))
 # interval=$(($interval*60))
 
 results=$(curl --silent "$API_ENDPOINT&fields=$fields&symbols=$symbols" \
-  | jq '.quoteResponse .result')
+  | /usr/local/bin/jq '.quoteResponse .result')
 
 query () {
-  echo $results | jq -r ".[] | select (.symbol == \"$1\") | .$2"
+  echo $results | /usr/local/bin/jq -r ".[] | select (.symbol == \"$1\") | .$2"
 }
 
 for symbol in $(IFS=' '; echo "${SYMBOLS[*]}"); do
@@ -77,5 +78,6 @@ for symbol in $(IFS=' '; echo "${SYMBOLS[*]}"); do
   fi
 
   printf $price
-  printf $price > $stamp_file
+  printf $price > $price_file
+  printf $diff > $diff_file
 done
