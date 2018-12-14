@@ -77,7 +77,7 @@ for symbol in $(IFS=' '; echo "${SYMBOLS[*]}"); do
     color=$COLOR_GREEN
   fi
 
-  printf $price
+  # printf $price
   printf $price > $price_file
-  printf $diff > $diff_file
+  echo ${diff:0:5} > $diff_file
 done
