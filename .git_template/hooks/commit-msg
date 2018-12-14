@@ -35,7 +35,7 @@ def choose_ticket(message, project_prefix)
   ticket_txt = prompt.select("Select a ticket: ", in_progress_tickets.concat(open_tickets), per_page: 10)
   ticket_id = ticket_txt.split(' ')[0]
   if ticket_id != 'Add'
-    message = message.strip + " [jira: #{project_prefix}-#{ticket_id}]"
+    message = "[#{project_prefix}-#{ticket_id}]" + message.strip
     File.open(ARGV[0], 'w') { |f| f.write message }
     return
   end
@@ -62,7 +62,7 @@ def choose_ticket(message, project_prefix)
   # status_params = "{ \"fields\": { \"assignee\": { \"name\": \"#{ENV['JIRA_EMAIL'].split('@')[0]}\"} }, \"transition\": { \"id\": \"3\" } }"
   # curl_cmd = "curl -D- -u #{ENV['JIRA_EMAIL']}:#{ENV['JIRA_PASSWORD']} -H 'Content-Type: application/json' -X PUT -d '#{status_params}' https://globaldebtregistry.atlassian.net:443/rest/api/2/issue/#{issue.key}/transitions"
 
-  message = message.strip + " [jira: #{issue.key}]"
+  message = "[#{project_prefix}-#{ticket_id}]" + message.strip
   File.open(ARGV[0], 'w') { |f| f.write message }
   # exit 1
 end
@@ -70,12 +70,12 @@ end
 message_file = ARGV[0]
 message = File.read(message_file)
 
-regex = /\[jira: (\d+)\]|merge/
+regex = /\[(\d+)\]|merge/
 project_prefix = 'AD'
 
 if !regex.match(message)
   prompt = TTY::Prompt.new
-  prompt.warn "[POLICY] Your commit message is missing a ticket number (i.e. [jira: #{project_prefix}-xxxx])"
+  prompt.warn "[POLICY] Your commit message is missing a ticket number (i.e. [#{project_prefix}-xxxx])"
   message = choose_ticket(message, project_prefix)
 end
 
