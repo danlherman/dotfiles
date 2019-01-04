@@ -19,7 +19,7 @@ Plug 'tomtom/tcomment_vim'
 " Run rspec from vim
 " Plug 'thoughtbot/vim-rspec'
 " Util for running rspec to tmux window via vim
-Plug 'benmills/vimux'
+" Plug 'benmills/vimux'
 " colorscheme jellybeans
 Plug 'nanotech/jellybeans.vim'
 " silver searcher search
@@ -31,12 +31,12 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'tpope/vim-endwise'
 " Surround code with pairs ("", {}, etc)
 Plug 'tpope/vim-surround'
-" Extends built-in dot repeat command to handle more complex motione
+" Extends built-in dot repeat command to handle more complex motion
 Plug 'tpope/vim-repeat'
 " Nerd Tree file listing/selection
 Plug 'scrooloose/nerdtree'
 " DB support for VIM
-Plug 'tpope/vim-db'
+" Plug 'tpope/vim-db'
 " vimtags for ctag integration
 " Plug 'szw/vim-tags'
 " status bar plugin for cool looking status line
@@ -56,6 +56,8 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'honza/vim-snippets'
 " For ESLint integration
 Plug 'w0rp/ale'
+" Typescript syntax highlighting
+" Plug 'leafgarland/typescript-vim'
 
 " End Vimplug section
 call plug#end()
