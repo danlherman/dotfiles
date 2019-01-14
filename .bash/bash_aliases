@@ -17,7 +17,7 @@ alias mpl='cd ~/gdr/projects/mpl'
 alias mplscripts='cd ~/gdr/projects/mpl_scripts'
 alias mplapi='cd ~/gdr/projects/mpl_api'
 alias mplback='cd ~/gdr/projects/mpl_backend'
-alias mplbc='cd ~/gdr/projects/mpl_bc'
+alias mplbc='cd ~/gdr/projects/pledge_bc'
 alias mplweb='cd ~/gdr/projects/mpl_web_api'
 alias mplweb2='cd ~/gdr/projects/mpl_web_api2'
 alias mplreact='cd ~/gdr/projects/mpl_react'
@@ -87,6 +87,10 @@ alias dbuild='docker build'
 alias drm='docker rm'
 alias drun='docker run --rm -it '
 alias dstopall='docker kill $(docker ps -q)'
+# alias dps="docker ps | awk 'BEGIN{FIELDWIDTHS = \"20 33 23 20 20 60 40 50\"}{print \$1,\$2,\$5,\$7,\$8}'"
+alias dps='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}" -a'
+dexec() { docker exec -i -t $@ /bin/bash ;}
+dlog()  { docker logs -f $@ ;}
 
 # Kubernetes shortcuts
 alias k8='kubectl'
@@ -162,3 +166,4 @@ function top30history {
 function match_csv_col1 {
   awk -F',' 'NR==FNR{c[$1]++;next};c[$1] > 0' $1 $2
 }
+
