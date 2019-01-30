@@ -91,6 +91,8 @@ alias dstopall='docker kill $(docker ps -q)'
 alias dps='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}" -a'
 dexec() { docker exec -i -t $@ /bin/bash ;}
 dlog()  { docker logs -f $@ ;}
+dstop() { docker stop $(dps | grep $@ | awk '{print $1}'); }
+dkill() { docker rm $(dps | grep $@ | awk '{print $1}'); }
 
 # Kubernetes shortcuts
 alias k8='kubectl'

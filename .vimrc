@@ -387,3 +387,6 @@ omap / <Plug>(easymotion-sn)
 map n <Plug>(easymotion-next)
 map N <Plug>(easymotion-prev)
 
+" Set Gdiff split to be vertical instead of horizontal
+set diffopt+=vertical
+
