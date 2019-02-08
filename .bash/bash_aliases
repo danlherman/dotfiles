@@ -9,6 +9,7 @@ alias genssh='~/.ssh/gen_ssh_config'
 alias tmux="TERM=screen-256color-bce tmux"
 alias hang="hangups -c ~/hangups/hangups.conf"
 alias macnetstat="sudo lsof -PiTCP -sTCP:LISTEN"
+alias retmux="tmux attach -d -t 0" # Re-attach to tmux session 0
 
 # Links to common directories
 alias c='cd ~/gdr/projects/'
@@ -92,7 +93,7 @@ alias dps='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Ports}
 dexec() { docker exec -i -t $@ /bin/bash ;}
 dlog()  { docker logs -f $@ ;}
 dstop() { docker stop $(dps | grep $@ | awk '{print $1}'); }
-dkill() { docker rm $(dps | grep $@ | awk '{print $1}'); }
+dkill() { docker stop $(dps | grep $@ | awk '{print $1}') && docker rm $(dps | grep $@ | awk '{print $1}'); }
 
 # Kubernetes shortcuts
 alias k8='kubectl'
