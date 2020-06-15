@@ -10,39 +10,32 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias hang="hangups -c ~/hangups/hangups.conf"
 alias macnetstat="sudo lsof -PiTCP -sTCP:LISTEN"
 alias retmux="tmux attach -d -t 0" # Re-attach to tmux session 0
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
+# alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'  | pbcopy && pbpaste && echo"
+# killprg() { ps auxww | grep -i $@ | grep -v grep | awk '{ print $2 }' | xargs kill; }
 
 # Links to common directories
-alias c='cd ~/gdr/projects/'
+alias c='cd ~/projects/'
 alias scratch='cd ~/scratch/'
-alias mpl='cd ~/gdr/projects/mpl'
-alias mplscripts='cd ~/gdr/projects/mpl_scripts'
-alias mplapi='cd ~/gdr/projects/mpl_api'
-alias mplback='cd ~/gdr/projects/mpl_backend'
-alias mplbc='cd ~/gdr/projects/pledge_bc'
-alias mplweb='cd ~/gdr/projects/mpl_web_api'
-alias mplweb2='cd ~/gdr/projects/mpl_web_api2'
-alias mplreact='cd ~/gdr/projects/mpl_react'
 alias dots='cd ~/dotfiles'
-alias loannet='cd ~/gdr/blockchain-loan-network'
-alias loannetstaging='cd ~/gdr/staging-loan-network'
-alias fabric='cd ~/gdr/fabric-composer/loan-network'
-alias composerui='node /Users/danherman/scratch/composer/packages/composer-website/node_modules/composer-ui/cli.js'
 
 # Easy editing of aliases file
 alias ea='vim ~/.bash/bash_aliases'
 alias sa='source ~/.bash/bash_aliases;echo "Aliases updated"'
 
 # Easy editing of bash_profile
-alias eb='vim ~/.bash_profile'
+#alias eb='vim ~/.bash_profile'
+alias ez='vim ~/.zshrc'
 alias sb='source ~/.bash_profile; echo "Bash profile sourced"'
+alias sz='source ~/.zshrc; echo "ZSH profile sourced"'
 
 # Easy editing of tmux.conf file
 alias et='vim ~/.tmux.conf'
 
 # Git shortcuts
 alias gc='git commit'
-alias gcu='git reset HEAD~' # git commit undo
-alias gcn='RUBO=no git commit'
+alias gcu='git reset --soft HEAD~1' # git commit undo
+alias gcn='git commit --no-verify'
 alias gpull='git pull'
 alias gpush='git push'
 alias gpushn='git push --no-verify'
@@ -61,12 +54,14 @@ alias gpushb='git push --set-upstream origin'
 # Serverless shortcuts
 alias slsdf='serverless deploy function --function'
 alias slspdf='serverless deploy --stage prod function --function '
+alias slsp2df='serverless deploy --stage prod2 function --function '
 alias slstdf='serverless deploy --stage test function --function '
 alias slssdf='serverless deploy --stage staging function --function '
 alias slsddf='serverless deploy --stage demo function --function '
 alias slsdft='serverless deploy -t function --function'
 alias slsd='serverless deploy --stage dev'
 alias slspd='serverless deploy --stage prod'
+alias slsp2d='serverless deploy --stage prod2'
 alias slssd='serverless deploy --stage staging'
 alias slstd='serverless deploy --stage test'
 alias slsdd='serverless deploy --stage demo'
@@ -74,6 +69,7 @@ alias slsil='AWS_XRAY_CONTEXT_MISSING=LOG_ERROR serverless invoke local --functi
 alias slsdebug='export SLS_DEBUG=*'
 alias slsnodebug='unset SLS_DEBUG'
 alias slsremove='serverless remove --region us-east-1'
+alias slsremoves='serverless remove --stage staging --region us-east-1'
 alias slsremovep='serverless remove --stage prod --region us-east-1'
 
 # AWS shortcuts
@@ -92,8 +88,8 @@ alias dstopall='docker kill $(docker ps -q)'
 alias dps='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}" -a'
 dexec() { docker exec -i -t $@ /bin/bash ;}
 dlog()  { docker logs -f $@ ;}
-dstop() { docker stop $(dps | grep $@ | awk '{print $1}'); }
-dkill() { docker stop $(dps | grep $@ | awk '{print $1}') && docker rm $(dps | grep $@ | awk '{print $1}'); }
+# dstop() { docker stop $(dps | grep $@ | awk '{print $1}'); }
+# dkill() { docker stop $(dps | grep $@ | awk '{print $1}') && docker rm $(dps | grep $@ | awk '{print $1}'); }
 
 # Kubernetes shortcuts
 alias k8='kubectl'
@@ -114,6 +110,20 @@ alias console='be console'
 alias lastmigration='vim `last_rails_migration`'
 alias rdbm='be rake db:migrate;RAILS_ENV=test be rake db:migrate'
 alias rbenv-update='cd ~/.rbenv;gpull;cd plugins/ruby-build;gpull'
+
+# Go shortcuts
+gobuild() { GOOS=linux GO111MODULE=off go build $@.go; }
+goget() { go get -d ./...; }
+godeploy() {
+  rm $@.zip ||
+  rm $@ ||
+  GOOS=linux GO111MODULE=off go build $@.go &&
+  zip -r $@ . &&
+  aws lambda update-function-code --function-name $@ --zip-file fileb://$@.zip;
+}
+gopushaws() { aws lambda update-function-code --function-name $@ --zip-file fileb://$@.zip; }
+gozip() { zip -r $@ .;}
+
 
 # Dot files management
 # Check(no changes) to dotfiles if see if there are any changes
@@ -163,10 +173,12 @@ function fpp {
 }
 
 function top30history {
-  history|awk '{print $2}'|sort|uniq -c|sort -rn|head -30|awk '!max{max=$1;}{r="";i=s=100*$1/max;while(i-->0)r=r"#";printf "%50s %5d %s %s",$2,$1,r,"\n";}'
+  echo "function broken"
+  # history|awk '{print $2}'|sort|uniq -c|sort -rn|head -30|awk '!max{max=$1;}{r="";i=s=100*$1/max;while(i-->0)r=r"#";printf "%50s %5d %s %s",$2,$1,r,"\n";}'
 }
 
 function match_csv_col1 {
-  awk -F',' 'NR==FNR{c[$1]++;next};c[$1] > 0' $1 $2
+  echo "function broken"
+  # awk -F',' 'NR==FNR{c[$1]++;next};c[$1] > 0' $1 $2
 }
 
