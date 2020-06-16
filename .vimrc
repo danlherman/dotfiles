@@ -388,7 +388,11 @@ map n <Plug>(easymotion-next)
 map N <Plug>(easymotion-prev)
 
 " Set Gdiff split to be vertical instead of horizontal
-set diffopt+=vertical
+if &diff
+  set diffopt-=internal
+  set diffopt+=vertical
+endif
+"set diffopt+=vertical
 
 " https://nvd.nist.gov/vuln/detail/CVE-2019-12735
 set nomodeline

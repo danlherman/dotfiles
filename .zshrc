@@ -56,10 +56,10 @@ export PATH="/usr/local/opt/openssl/bin:$HOME/go/bin:/usr/local/bin:$PATH"
 export GOPATH=$HOME/go
 
 # The next line updates PATH for the Google Cloud SDK.
-source /Users/danherman/google-cloud-sdk/path.zsh.inc
+#source /Users/danherman/google-cloud-sdk/path.zsh.inc
 
 # The next line enables zsh completion for gcloud.
-source /Users/danherman/google-cloud-sdk/completion.zsh.inc
+#source /Users/danherman/google-cloud-sdk/completion.zsh.inc
 
 # export PATH="/usr/local/opt/go@1.10/bin:$PATH"
 
@@ -73,3 +73,9 @@ source /Users/danherman/google-cloud-sdk/completion.zsh.inc
 # # uninstall by removing these lines or running `tabtab uninstall slss`
 # [[ -f /Users/danherman/gdr/projects/mpl_web_api2/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/danherman/gdr/projects/mpl_web_api2/node_modules/tabtab/.completions/slss.zsh
 eval "$(rbenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/danherman/.ssh/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/danherman/.ssh/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/danherman/.ssh/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danherman/.ssh/google-cloud-sdk/completion.zsh.inc'; fi
