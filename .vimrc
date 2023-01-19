@@ -59,6 +59,12 @@ Plug 'w0rp/ale'
 " Typescript syntax highlighting
 " Plug 'leafgarland/typescript-vim'
 
+" Black for Python formatting
+Plug 'psf/black', { 'branch': 'stable' }
+
+" Golang support for Vim
+Plug 'fatih/vim-go'
+
 " End Vimplug section
 call plug#end()
 
@@ -396,3 +402,12 @@ endif
 
 " https://nvd.nist.gov/vuln/detail/CVE-2019-12735
 set nomodeline
+
+" Run Black on Python files automatically on save
+autocmd BufWritePre *.py execute ':Black'
+
+" Show commit that introduced current line
+map <silent><Leader>gb :call setbufvar(winbufnr(popup_atcursor(systemlist("cd " . shellescape(fnamemodify(resolve(expand('%:p')), ":h")) . " && git log --no-merges -n 1 -L " . shellescape(line("v") . "," . line(".") . ":" . resolve(expand("%:p")))), { "padding": [1,1,1,1], "pos": "botleft", "wrap": 0 })), "&filetype", "git")<CR>
+
+" Add linting for Golang files"
+set rtp+=$GOPATH/src/golang.org/x/lint/misc/vim

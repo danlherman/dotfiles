@@ -50,6 +50,12 @@ alias gpushstaging='gco staging;gm master;gpushn;gco master'
 alias gpushprod='gco production;gm staging;gpushn;gco master'
 alias gpushall='gco staging;gm master;gpushn;gco production;gm staging;gpushn;gco master'
 alias gpushb='git push --set-upstream origin'
+# squash all branch commits into one commit -- see https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
+alias gsquash='git reset $(git merge-base master $(git rev-parse --abbrev-ref HEAD))'
+# after gsquash you need to:
+#  git add -A
+#  git commit -m "one commit message for all commits"
+#  git push --force
 
 # Serverless shortcuts
 alias slsdf='serverless deploy function --function'
@@ -79,6 +85,7 @@ alias awslog='awslogs get $1 ALL -s1h --watch | sed -e 's|$1||''
 alias d='docker'
 alias di='docker images'
 alias dc='docker ps -a'
+alias ds='docker start '
 alias dfile='vi Dockerfile'
 alias dbuild='docker build'
 alias drm='docker rm'
@@ -102,6 +109,9 @@ alias lint='npm run lint'
 alias nconsole='npm run console'
 alias build='npm run build'
 
+# Obsidian shortcuts
+alias syncob='cd ~/stuff;git pull;git add .;git commit -m"updated stuff";git push -u origin master;cd -'
+
 # Rails shortcuts
 alias rake='be rake'
 alias rails='be rails'
@@ -110,6 +120,9 @@ alias console='be console'
 alias lastmigration='vim `last_rails_migration`'
 alias rdbm='be rake db:migrate;RAILS_ENV=test be rake db:migrate'
 alias rbenv-update='cd ~/.rbenv;gpull;cd plugins/ruby-build;gpull'
+
+# Playwright shortcut
+alias play='npx playwright codegen --target python -o tests/generated/test_pw_recovery.py http://localhost:3000'
 
 # Go shortcuts
 gobuild() { GOOS=linux GO111MODULE=off go build $@.go; }
@@ -134,6 +147,12 @@ alias dotu='for file in $(diff -qr ~/dotfiles ~/ | grep differ | cut -d " " -f 4
 alias dotpc='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do echo "$file"; done'
 # Update dotfiles from git repo to system
 alias dotp='for file in $(diff -qr ~/ ~/dotfiles | grep differ | cut -d " " -f 4); do fpp "$file"; echo "$file"; done'
+
+# MOC shortcuts
+# setup JACK for MOC
+alias jack='jackd -d coreaudio'
+alias moc='mocp'
+alias mocnotify='~/moc/growl-notify.sh &'
 
 # SSH/SFTP/SCP tabout from SSH config
 # complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | grep -v "[?*]" | cut -d" " -f2)" scp sftp ssh
